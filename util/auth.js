@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AppState } from "react-native";
+
 
 const API_KEY = "AIzaSyA4mVO08C0edR4JbqvmE4VeDsmBotTUunE";
 
