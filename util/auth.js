@@ -12,13 +12,14 @@ async function aunthenticate(mode, email, password) {
     returnSecureToken: true,
   });
 
-   console.log(response.data);
+    const token = response.data.idToken;
+      return token;
 }
 
-export async function createUser(email, password) {
-  await aunthenticate("signUp", email, password);
+export  function createUser(email, password) {
+  return aunthenticate("signUp", email, password);
 }
 
-export async function login(email, password) {
-  await aunthenticate("signInWithPassword", email, password);
+export function login(email, password) {
+  return aunthenticate("signInWithPassword", email, password);
 }
