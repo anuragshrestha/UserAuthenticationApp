@@ -1,17 +1,20 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-
+import AuthContext from '../store/auth-context';
 
 function WelcomeScreen() {
 
   const[fetchedMessage, setFetchedMessage] = useState('');
 
+  const authContext = useContext(AuthContext);
+  const token = authContext.token;
+
   useEffect(() => {
-      axios.get('https://reactnative-expense-app-default-rtdb.firebaseio.com/message.json').then((response) => {
-        console.log(response.data);
+      axios.get('https://reactnative-expense-app-default-rtdb.firebaseio.com/message.json?auth =' + token ).then((response) => {
+          setFetchedMessage(response.data);
       });
-  }, [ ]);
+  }, [ token]);
   return (
     <View style={styles.rootContainer}>
       <Text style={styles.title}>Welcome!</Text>
